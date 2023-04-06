@@ -40,31 +40,35 @@ library("knitr")
 variable  = names(ocde)
 df.var = data.frame(variable)  
 
-df.des = data.frame(c("Revenu par tranche de revenus",
-                    "Revenu par unité de consommation",
-                    "Nombre de personnes",
-                    "Nombre d’adultes",
-                    "Cotisation au titre du complément de police de type 1",
-                    "Cotisation au titre du complément de police de type 2",
-                    "Cotisation au titre du complément de police de type 3",
-                    "Montant des dommages pour les sinistres de type 1",
-                    "Montant des dommages pour les sinistres de type 2",
-                    "Montant des dommages pour les sinistres de type 3",
-                    "Nombre de sinistres antérieurs couverts par l’assurance",
-                    "Nombre de sinistres antérieurs couverts par l’assurance",
-                    "Nombre de sinistres antérieurs couverts par l’assurance"
+df.des = data.frame(c(
+  "Noms de chaque pays membre",
+  "taux brut de natalité, exprimé en pour mille",
+                    "taux de chômage, exprimé en pour mille",
+                    "pourcentage d’actifs dans le secteur primaire, exprimé en pour mille",
+                    "pourcentage d’actifs dans le secteur secondaire, exprimé en pour mille",
+                    "produit intérieur brut (par habitant)",
+                    "formation brute de capital fixe (par habitant)",
+                    "hausse des prix",
+                    "recettes courantes (par habitant)",
+                    "mortalité infantile, exprimée en pour mille",
+                    "consommation de protéines animales (par habitant)",
+                    "consommation d’énergie (par habitant)",
+                    "4 années différentes"
 ))
 
 
 names(df.des) = "Description"
 names(df.var) ="variables"
 table = df.var %>%  add_column(df.des)
-table
 
+knitr::kable(table,
+              caption = 'Fig 1 Tableau des variables',
+  booktabs = TRUE, valign = 't'
+) 
 
-
-```
-
+ocde75 = ocde %>% 
+  filter(Annee == "75")
+ocde75
 
 ```
 
