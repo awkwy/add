@@ -32,7 +32,7 @@ attach(ocde)
 ```
 
 Lors de ce projet nous allons etudier les pays membrer de l'OCDE  tous les deux annees entre 1975 et 1981 inclus.
-L'objective de notre anlyse sera de presente les donné de manierre claire et prices dans l'espoire d'identifier des modéles dans nos donnees. Et pour ce faire nous avons prevue dans premiere temps d'effectue une serie statistique 
+L'objective de notre anlyse sera de presente les donné de manierre claire et prices dans l'espoire d'identifier des modéles dans nos donnees. Et pour ce faire nous avons prevue dans premiere temps d'effectue une serie statistiquen des capicite  
 <div align="center"> OCDE  </div> 
 ## Présentation des données
 ```{r Présentation des données ,echo=FALSE}
