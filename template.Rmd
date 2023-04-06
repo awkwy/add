@@ -1,0 +1,35 @@
+---
+title: "template"
+author: "yu"
+date: '2023-03-14'
+output:
+  rmarkdown::html_document
+      highlight: tango
+      css : [style.css]
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library("tidyverse") #pour avoir de 'beaux' graphiques
+library("FactoMineR") #pour effectuer l'ACP
+library("factoextra") #pour extraire et visualiser les résultats issus de FactoMineR 
+library("NbClust") #pour le choix du nombre de groupes de classif par CAH 
+library("fossil") #pour le calcul du rand index
+library("corrplot") #pour le calcul du rand index
+```
+
+## R Markdown
+
+```{r cars, echo=FALSE}
+
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, fig.align='center',echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

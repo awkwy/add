@@ -1,0 +1,76 @@
+---
+title: "projet_ocde"
+author: "ali-lionel"
+date: '2023-04-06'
+output: 
+  pdf_document:
+    latex_engine: xelatex
+sansfont: Arial
+fig_crop: false
+toc: false
+classoption: landscape
+fontsize: 14pt
+geometry: margin=0.5in
+header-includes:
+- \usepackage{booktabs}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig.align = 'center')
+library("dplyr")
+library("tidyverse")
+library("ggplot2")
+library("kableExtra")
+library("modelsummary")
+library("ggrepel")
+```
+
+```{r importation des données}
+ocde <- read.csv("~/Downloads/ocde.csv", sep=";")
+attach(ocde)
+
+```
+<div align="center"> OCDE  </div> 
+## Présentation des données
+```{r Présentation des données ,echo=FALSE}
+library("knitr")
+variable  = names(ocde)
+df.var = data.frame(variable)  
+
+df.des = data.frame(c("Revenu par tranche de revenus",
+                    "Revenu par unité de consommation",
+                    "Nombre de personnes",
+                    "Nombre d’adultes",
+                    "Cotisation au titre du complément de police de type 1",
+                    "Cotisation au titre du complément de police de type 2",
+                    "Cotisation au titre du complément de police de type 3",
+                    "Montant des dommages pour les sinistres de type 1",
+                    "Montant des dommages pour les sinistres de type 2",
+                    "Montant des dommages pour les sinistres de type 3",
+                    "Nombre de sinistres antérieurs couverts par l’assurance",
+                    "Nombre de sinistres antérieurs couverts par l’assurance",
+                    "Nombre de sinistres antérieurs couverts par l’assurance"
+))
+
+
+names(df.des) = "Description"
+names(df.var) ="variables"
+table = df.var %>%  add_column(df.des)
+table
+
+
+
+```
+
+
+```
+
+
+## Nos données 
+
+
+```{r tableau, echo=FALSE}
+
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

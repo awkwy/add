@@ -1,0 +1,84 @@
+---
+title: "ACM"
+author: "yu"
+date: '2023-04-04'
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig.pos = "center")
+library("tidyverse")# pour la manipulation des données
+library("questionr") # pour la description des variables
+library("FactoMineR") # pour l'analyse géométrique des données
+library("RColorBrewer") # pour les palettes de couleurs
+library("ggrepel") # pour que les libellés des points ne se chevauchent pas (crucial !)
+library("explor") # pour une visualisation exploratoire des résultats de l'analyse
+options(scipen=999)
+library("factoextra")
+loisirs =  read.csv2("~/Downloads/AnaDo_JeuDonnees_Loisirs.csv")
+loisirs <- loisirs %>% 
+  dplyr::select(-Age,-Sexe,-Situationmatrimoniale,-Profession,-NbActivites) 
+loisirs$TV <- as.factor(loisirs$TV)
+```
+
+##  2.1 Données
+
+```{r données}
+n = nrow(loisirs)
+nbvar = length(loisirs)
+nmod = 2 * nbvar - 2 + 5
+n
+nbvar
+nmod
+```
+
+## 2.2 Analyse des correspondances multiples
+
+
+
+```{r jardinage, echo=FALSE}
+res.acm <- MCA(loisirs,graph=FALSE)
+summary(res.acm)
+p = fviz_mca_ind(res.acm, 
+             label = "none", # hide individual labels
+             habillage = "Jardinage", # color by groups 
+             palette = c("#00AFBB", "#E7B800"),
+             addEllipses = TRUE, ellipse.type = "confidence",
+             ggtheme = theme_minimal())
+# calcule des centre de gravite 
+coord_in_12 <- res.acm$ind$coord[,1:2]
+JN <- colMeans(coord_in_12[loisirs$Jardinage=="N",]) # moyenne des non
+JO <- colMeans(coord_in_12[loisirs$Jardinage=="O",]) # moyenne des oui
+
+p + geom_point(aes(x=JO[1],y=JO[2]),size=3, shape=15) + geom_point(aes(x=JN[1],y=JN[2]),size=3, shape=15)
+
+```
+
+```{r lecture, echo=FALSE}
+
+pl = fviz_mca_ind(res.acm, 
+             label = "none", # hide individual labels
+             habillage = "Lecture", # color by groups 
+             palette = c("#00AFBB", "#E7B800"),
+             addEllipses = TRUE, ellipse.type = "confidence",
+             ggtheme = theme_minimal())
+# calcule des centre de gravite 
+coord_in_12 <- res.acm$ind$coord[,1:2]
+LN <- colMeans(coord_in_12[loisirs$Lecture=="N",]) # moyenne des non
+LO <- colMeans(coord_in_12[loisirs$Lecture=="O",]) # moyenne des oui
+
+pl + geom_point(aes(x=LO[1],y=LO[2]),size=3, shape=15) + geom_point(aes(x=JN[1],y=JN[2]),size=3, shape=15)
+
+
+
+```
+
+
+```{r pres, echo=FALSE}
+plot(pressure)
+```
+
+```{r pressé"ure, echo=FALSE}
+plot(pressure)
+```
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
