@@ -8,7 +8,7 @@ output:
 sansfont: Arial
 fig_crop: false
 toc: false
-classoption: landscape
+classoption: portrait
 fontsize: 14pt
 geometry: margin=0.5in
 header-includes:
